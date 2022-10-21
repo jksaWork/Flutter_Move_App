@@ -50,7 +50,16 @@ class Api {
     return dio.get('/api/genres');
   }
 
-  static getMovies(String type) async {
-    return dio.get('/api/movies?type=$type');
+  static getMovies({String? type, int? genre_id, int? page = 1}) async {
+    return dio.get('/api/movies',
+        queryParameters: {'type': type, 'genre_id': genre_id, 'page': page});
+  }
+
+  static Future<Response> getActors({required int movieId}) async {
+    return dio.get('/api/movies/${movieId}/actors');
+  }
+
+  static Future<Response> getRelatedMovies({required int movieId}) async {
+    return dio.get('/api/movies/${movieId}/related_movies');
   }
 }

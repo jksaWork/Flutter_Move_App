@@ -14,6 +14,7 @@ class AppTheme {
 ThemeData getDarkTheme() {
   return ThemeData(
     appBarTheme: AppBarTheme(
+      color: Colors.grey[500],
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.blue,
         statusBarIconBrightness: Brightness.light,

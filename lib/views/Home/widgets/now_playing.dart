@@ -9,8 +9,8 @@ class NowPlayingMovies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MoviesController controller = Get.find();
-    return GetBuilder<MoviesController>(builder: (con) {
+    HomeController controller = Get.find();
+    return GetBuilder<HomeController>(builder: (con) {
       return Container(
         child: Column(
           children: [
@@ -33,11 +33,11 @@ class NowPlayingMovies extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Container(
               height: MediaQuery.of(context).size.height * .4,
-              child: controller.is_playing_now_movies
+              child: controller.is_playing_now_movies.value
                   ? Container(
                       child: Center(child: CircularProgressIndicator()),
                     )
@@ -45,6 +45,7 @@ class NowPlayingMovies extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) =>
                           NowPalyingItem(
+                            type: 'mine',
                             movie: controller.now_playing_movies[index],
                           ),
                       separatorBuilder: (BuildContext context, int index) =>

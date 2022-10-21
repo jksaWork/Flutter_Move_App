@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies_app/controllers/grener_controller.dart';
 import 'package:movies_app/data/Models/genres.dart';
+import 'package:movies_app/views/Movies/movies.dart';
 
 class GenrePage extends StatelessWidget {
   const GenrePage({Key? key}) : super(key: key);
@@ -19,16 +20,22 @@ class GenrePage extends StatelessWidget {
         itemCount: controller.genres.length,
         itemBuilder: (BuildContext context, int index) {
           Genre genre = controller.genres[index];
-          return Card(
-            // shape: ShapeBorder(),
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Text(
-                genre.name,
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              Text("${genre.moviesCount}"),
-            ]),
+          return InkWell(
+            onTap: () {
+              Get.to(() => MoviesScreen(genre_id: genre.id));
+            },
+            child: Card(
+              // shape: ShapeBorder(),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      genre.name,
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    Text("${genre.moviesCount}"),
+                  ]),
+            ),
           );
         },
       ),

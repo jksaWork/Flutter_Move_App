@@ -5,7 +5,7 @@ import 'package:movies_app/views/Settings/settings.dart';
 import 'package:movies_app/views/genres/grens.dart';
 
 class WelcomeController extends GetxController {
-  var currentIndex = 0.obs;
+  var currentIndex = 2.obs;
 
   List<Widget> screens = [
     Home(),
